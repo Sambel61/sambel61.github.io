@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You - Halachik</title>
+  <meta name="description" content="Thank you for joining Halachik's poultry farm investment whitelist.">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .thank-you-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(to bottom, var(--primary-light), var(--white));
+    }
+    
+    .thank-you-card {
+      background-color: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-lg);
+      padding: 3rem;
+      max-width: 600px;
+      width: 100%;
+      animation: fadeIn 1s ease-out;
+    }
+    
+    .success-icon {
+      background-color: var(--primary-light);
+      color: var(--primary);
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+    }
+    
+    .thank-you-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    
+    .thank-you-message {
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+      color: var(--text-light);
+    }
+    
+    .return-button {
+      display: inline-block;
+      background-color: var(--primary);
+      color: var(--white);
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .return-button:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="thank-you-container">
+    <div class="thank-you-card">
+      <div class="success-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+      </div>
+      <h1 class="thank-you-title">Thank You!</h1>
+      <p class="thank-you-message">Your submission has been received. We'll reach out to you shortly with investment details about Halachik's poultry farming opportunity.</p>
+      <a href="index.html" class="return-button">Return to Homepage</a>
+    </div>
+  </div>
+  
+  <script src="translations.js"></script>
+  <script>
+    // Initialize language
+    document.addEventListener("DOMContentLoaded", () => {
+      // Get saved language or default to English
+      const savedLang = localStorage.getItem("language") || "en";
+      
+      // Set RTL for Arabic
+      document.body.classList.toggle("rtl", savedLang === "ar");
+      document.documentElement.dir = savedLang === "ar" ? "rtl" : "ltr";
+      
+      // Update text content if translations exist
+      const translations = window.translations ? window.translations[savedLang] : null;
+      if (translations) {
+        if (translations["form.success.title"]) {
+          document.querySelector(".thank-you-title").textContent = translations["form.success.title"];
+        }
+        if (translations["form.success.message"]) {
+          document.querySelector(".thank-you-message").textContent = translations["form.success.message"];
+        }
+      }
+    });
+  </script>
+</body>
+</html>
